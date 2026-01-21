@@ -1,0 +1,15 @@
+# Ignore everything.
+**
+
+# Except the following (include these)
+!src
+!LICENSE.txt
+!my_agent
+!pyproject.toml
+!uv.lock
+!README.md
+!requirements.txt
+
+# Filter unwanted files from included folders.
+**/__pycache__
+**/*.py[co]

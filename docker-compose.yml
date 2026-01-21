@@ -1,0 +1,104 @@
+version: "3.9"
+
+services:
+  # ============================================
+  # BACKEND (FastAPI)
+  # ============================================
+  api:
+    build:
+      context: .
+      args:
+        PYPI_USER: "${PYPI_USER}"
+        PYPI_PASSWORD: "${PYPI_PASSWORD}"
+        PYPI_HOST: "${PYPI_HOST}"
+    container_name: fact-api
+    entrypoint: /opt/venv/bin/uvicorn
+    command: api.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: always
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    volumes:
+      - ./wallet:/opt/oracle/wallet
+
+  # ============================================
+  # FRONTEND (React/Vite)
+  # ============================================
+  frontend:
+    build:
+      context: ./modern-wallet-ui-main
+      dockerfile: Dockerfile
+    container_name: wallet-frontend
+    restart: always
+    expose:
+      - "80"
+
+  # ============================================
+  # PROXY (Nginx)
+  # ============================================
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    depends_on:
+      - api
+      - frontend
+      - chatbot # Added chatbot dependency
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # Fixes "host not found" on Linux
+    volumes:
+      - ./certs:/etc/nginx/ssl/default:ro
+      - ./ssl/uia037.dev.openconsultinguk.com:/etc/letsencrypt:ro
+      - ./nginx/web.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+
+  # ============================================
+  # CHATBOT SERVICE (Custom FastAPI Agent)
+  # ============================================
+  chatbot:
+    build:
+      context: .
+      args:
+        PYPI_USER: "${PYPI_USER}"
+        PYPI_PASSWORD: "${PYPI_PASSWORD}"
+        PYPI_HOST: "${PYPI_HOST}"
+    container_name: bank-chatbot
+    restart: always
+    user: root
+    # Override the default entrypoint to use the virtual environment's python
+    entrypoint: /opt/venv/bin/python3
+    # Run uvicorn to serve your custom chatbot_server.py
+    command: -m uvicorn my_agent.chatbot_server:app --host 0.0.0.0 --port 5000
+    environment:
+      - PYTHONPATH=/home/user/app
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - .:/home/user/app
+      - ./my_agent:/home/user/app/my_agent
+    depends_on:
+      - api
+  # ============================================
+  # MCP GATEWAY (The "Boss" - Secure Bridge)
+  # ============================================
+  mcp-gateway:
+    build:
+      context: .
+      args:
+        # These MUST be here to pass your credentials to the Dockerfile
+        PYPI_USER: "${PYPI_USER}"
+        PYPI_PASSWORD: "${PYPI_PASSWORD}"
+        PYPI_HOST: "${PYPI_HOST}"
+    container_name: mcp-gateway
+    restart: always
+    user: root
+    # Using the virtual environment's python
+    entrypoint: /opt/venv/bin/python3
+    command: mcp_server/external_bank_mcp.py
+    environment:
+      - PYTHONPATH=/home/user/app
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/home/user/app

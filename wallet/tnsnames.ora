@@ -1,0 +1,12 @@
+uia037_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.uk-london-1.oraclecloud.com))(connect_data=(service_name=gaf100a793aa92f_uia037_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+uia037_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.uk-london-1.oraclecloud.com))(connect_data=(service_name=gaf100a793aa92f_uia037_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+uia037_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.uk-london-1.oraclecloud.com))(connect_data=(service_name=gaf100a793aa92f_uia037_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+uia037_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.uk-london-1.oraclecloud.com))(connect_data=(service_name=gaf100a793aa92f_uia037_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+uia037_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.uk-london-1.oraclecloud.com))(connect_data=(service_name=gaf100a793aa92f_uia037_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+

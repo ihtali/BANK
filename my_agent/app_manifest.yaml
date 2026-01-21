@@ -1,0 +1,5 @@
+# name: my_agent
+# version: 1.0.0
+# path: my_agent
+# description: "Banking agent connected to FastAPI backend."
+# entrypoint: agent:root_agent
