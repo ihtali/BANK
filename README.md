@@ -293,21 +293,9 @@ http://localhost/docs
 
 # 📸 Screenshots
 
-## Login Page
+## AI-Powered Banking Platform
 
-![BankStarter.jpeg](docs/BankStarter.jpeg)
-
-## Banking Dashboard
-
-![starter.jpg](docs/starter.jpg)
-
-## Transaction Management
-
-Add screenshot here
-
-## AI Assistant
-
-Add screenshot here
+![Screenshot 2026-01-02 at 10.08.24.jpeg](docss/Screenshot 2026-01-02 at 10.08.24.jpeg)
 
 ---
 
