@@ -299,7 +299,7 @@ http://localhost/docs
 
 ## Banking Dashboard
 
-Add screenshot here
+![starter.jpg](docs/starter.jpg)
 
 ## Transaction Management
 
