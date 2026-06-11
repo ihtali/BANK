@@ -295,7 +295,7 @@ http://localhost/docs
 
 ## Login Page
 
-Add screenshot here
+![BankStarter.jpeg](docs/BankStarter.jpeg)
 
 ## Banking Dashboard
 
