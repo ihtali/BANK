@@ -295,7 +295,7 @@ http://localhost/docs
 
 ## AI-Powered Banking Platform
 
-![Screenshot 2026-01-02 at 10.08.24.jpeg](docs/Screenshot 2026-01-02 at 10.08.24.jpeg)
+![Bank.jpeg](docs/Bank..jpeg)
 
 ---
 
