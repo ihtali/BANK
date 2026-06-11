@@ -1,4 +1,3 @@
-```markdown
 # 🏦 **SECUREBANK** – From Blank Slate to AI-Powered Banking
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -17,7 +16,7 @@
 
 It starts with a single step: a **blank cloud instance**. No code. No database. No AI. Just raw compute.
 
-This project chronicles the end-to-end journey of architecting and building a **production-ready AI banking system** from that empty slate. It's not just about writing code; it's about forging a resilient ecosystem where a web UI, secure APIs, an LLM, and a cloud database all learn to communicate in perfect harmony.
+This project chronicles the end-to-end journey of architecting and building a **production-ready AI banking system** from that empty slate.
 
 ```text
 🌱 EMPTY CLOUD SERVER
@@ -36,21 +35,140 @@ This project chronicles the end-to-end journey of architecting and building a **
          │
          ▼
 🏆 FULLY FUNCTIONAL AI BANKING SYSTEM
-```
-
----
-
-## ✨ **System in Action: A Debugging Story**
+✨ System in Action: A Debugging Story
 
 The journey from "buggy to brilliant" reveals a core engineering truth:
 
-> *"Problems almost never live in isolation."*
+"Problems almost never live in isolation."
+Attempt	Result	Lesson
+v1.0 🐛	Connection failed	Frontend couldn't reach the backend. Network layer issue.
+v1.1 🐞	Generic server error	Systems are talking, but APIs aren't aligned.
+v2.0 ✅	Your balance is $1,250.00	Success! Frontend ↔ Backend ↔ AI ↔ Database in perfect harmony.
+🚀 Key Features
 
-| Attempt | Result | Lesson |
-| :--- | :--- | :--- |
-| **v1.0** 🐛 | `Connection failed` | Frontend couldn't reach the backend. Network layer issue. |
-| **v1.1** 🐞 | `Generic server error` | Systems are talking, but APIs aren't aligned. |
-| **v2.0** ✅ | `Your balance is $1,250.00` | **Success!** Frontend ↔ Backend ↔ AI ↔ Database in perfect harmony. |
+💰 Core Banking
+
+Secure Authentication & JWT-based authorization
+Interactive Dashboard with real-time account balances
+Transaction Management (view, filter, transfer)
+Responsive UI built with React & TypeScript
+🧠 AI Banking Assistant
+
+Conversational Interface powered by Google's Gemini & ADK
+Grounded Responses – AI only uses live data from your accounts
+Action-Oriented – Can check balances and initiate transfers with explicit user confirmation
+MCP Tool Integration for secure backend actions
+🛠️ Engineering & DevOps
+
+Zero-Touch CI/CD – Auto-detects updates and deploys in <1 minute
+Full Containerization (Docker + Docker Compose)
+Nginx Reverse Proxy for security and load balancing
+Oracle Cloud Infrastructure (OCI) deployment
+Automated Testing pipeline
+🏗️ Architecture Overview
+
+text
+┌─────────────────────────────────────────────────────────────┐
+│                      🌐 CLIENT BROWSER                       │
+└─────────────────────────────┬───────────────────────────────┘
+                              │ HTTPS
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    🚪 NGINX REVERSE PROXY                    │
+└───────────────┬─────────────────────────────┬───────────────┘
+                │                             │
+                ▼ (API Calls)                 ▼ (Static Files)
+┌──────────────────────────────┐  ┌──────────────────────────────┐
+│     🐍 FASTAPI BACKEND       │  │     ⚛️ REACT FRONTEND         │
+│  • Business Logic            │  │  • User Interface             │
+│  • Auth & Sessions           │  │  • State Management           │
+│  • API Routes                │  │  • Real-time Updates          │
+└───────────────┬──────────────┘  └──────────────────────────────┘
+                │
+                ▼
+┌──────────────────────────────┐  ┌──────────────────────────────┐
+│  🧠 AI AGENT LAYER (ADK)     │  │  ☁️ ORACLE CLOUD              │
+│  • Gemini LLM Integration    │◄─┤  • Autonomous Database        │
+│  • MCP Tools                 │  │  • Persistent Storage         │
+│  • Grounded Prompts          │  │  • High Availability          │
+└──────────────────────────────┘  └──────────────────────────────┘
+🛠️ Technology Stack
+
+Category	Technologies
+Frontend	React 18, TypeScript, HTML5, CSS3
+Backend	Python 3.12, FastAPI, Uvicorn, Pydantic
+AI & LLM	Google ADK, Gemini, MCP
+Database	Oracle Autonomous Database, SQL
+Infrastructure	Docker, Docker Compose, Nginx, OCI Compute
+DevOps	GitHub Actions, CI/CD, Automated Testing
+Security	JWT, Environment Isolation, HTTPS
+☁️ Cloud Deployment & CI/CD
+
+text
+┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+│  git push│────▶│  GitHub  │────▶│  Build   │────▶│  Docker  │────▶│  Oracle  │
+│   to main│     │ Actions  │     │ + Test   │     │  Image   │     │  Cloud   │
+└──────────┘     └──────────┘     └──────────┘     └──────────┘     └─────┬────┘
+                                                                            │
+                                                                            ▼
+                                                              ┌─────────────────────┐
+                                                              │ docker-compose up   │
+                                                              │ (Zero-touch deploy) │
+                                                              └─────────────────────┘
+🤖 The AI Agent: Grounded Intelligence
+
+Grounded – Only answers based on live data from the Oracle database
+Action-Oriented – Performs tasks via secure MCP tools
+Safety-First – Requires explicit user confirmation before moving money
+Conversational – Understands natural language
+🚀 Run Locally
+
+Prerequisites
+
+Python 3.12+
+Docker & Docker Compose
+Oracle Database access
+Google AI API Key
+Clone & Start
+
+bash
+git clone https://github.com/ihtali/BANK.git
+cd BANK
+docker-compose up --build
+Access Points
+
+Service	URL
+Frontend	http://localhost
+Backend API	http://localhost/api
+API Docs	http://localhost/docs
+📸 Screenshot
+
+https://docs/Bank..jpeg
+
+👨‍💻 My Contribution
+
+Frontend development (React + TypeScript)
+Backend architecture (FastAPI)
+AI agent integration (Google ADK + Gemini)
+MCP tool implementation
+Database design (Oracle)
+Docker containerization
+Cloud deployment (OCI)
+CI/CD automation (GitHub Actions)
+🔮 Future Roadmap
+
+Multi-agent workflows
+Voice banking assistant
+Real-time notifications
+Analytics dashboard with AI insights
+Role-based access control
+📬 Connect With Me
+
+Ihtasham Ali
+
+https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white
+https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white
+
 
 ---
 
